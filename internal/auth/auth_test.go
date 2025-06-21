@@ -12,7 +12,7 @@ var ErrFooMalformedAuthHeaderTest = errors.New("malformed authorization header")
 
 func TestGetApiKey(t *testing.T) {
 	type Output struct {
-		apiKey string 
+		apiKey string
 		err    error
 	}
 
@@ -22,9 +22,9 @@ func TestGetApiKey(t *testing.T) {
 	}
 
 	tests := []Test{
-		{input : http.Header{"Authorization" : []string{"ApiKey qwertyuiop"}}, expectedOutput : Output{apiKey: "qwertyuiop", err: nil}},
-		{input : http.Header{"Authentication" : []string{"ApiKey qwertyuiop"}}, expectedOutput : Output{apiKey: "", err: ErrFooNoAuthHeaderTest}},
-		{input : http.Header{"Authorization" : []string{"qwertyuiop"}}, expectedOutput : Output{apiKey: "", err: ErrFooMalformedAuthHeaderTest}},
+		{input: http.Header{"Authorization": []string{"ApiKey qwertyuiop"}}, expectedOutput: Output{apiKey: "qwertyuiop", err: nil}},
+		{input: http.Header{"Authentication": []string{"ApiKey qwertyuiop"}}, expectedOutput: Output{apiKey: "", err: ErrFooNoAuthHeaderTest}},
+		{input: http.Header{"Authorization": []string{"qwertyuiop"}}, expectedOutput: Output{apiKey: "", err: ErrFooMalformedAuthHeaderTest}},
 	}
 
 	for _, test := range tests {
@@ -33,9 +33,9 @@ func TestGetApiKey(t *testing.T) {
 
 		if gotErr != nil && wantErr == nil {
 			t.Fatalf("Got an error, but expecting no error")
-			continue 
+			continue
 		}
-		
+
 		if gotErr == nil && wantErr != nil {
 			t.Fatalf("Got no error, but expecting an error")
 		}
@@ -49,4 +49,3 @@ func TestGetApiKey(t *testing.T) {
 		}
 	}
 }
-
