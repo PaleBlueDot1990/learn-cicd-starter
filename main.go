@@ -98,6 +98,6 @@ func main() {
 }
 
 func unused() {
-	//This function does nothing 
-	// and is called nowhere 
+	//This function does nothing
+	//and is called nowhere
 }
